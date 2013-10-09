@@ -68,19 +68,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\dist\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\dist\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CustomBuildAfterTargets>Build</CustomBuildAfterTargets>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\include;..\..\..\cinder_0.8.5_vc2012\include;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\include;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\include\msw;..\..\..\cinder_0.8.5_vc2012\boost;X:\source\leap_sdk_win_x86_0.8.1+6221\LeapSDK\include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cairo\include;..\..\Cinder\blocks\Cairo\include\msw;..\..\Cinder\boost;..\..\LeapDeveloperKit\LeapSDK\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -91,10 +97,10 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>"..\..\..\cinder_0.8.5_vc2012\include";..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\include;..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\..\cinder_0.8.5_vc2012\lib;..\..\..\cinder_0.8.5_vc2012\lib\msw;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\lib\msw;X:\source\leap_sdk_win_x86_0.8.1+6221\LeapSDK\lib\x86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\lib;..\..\Cinder\lib\msw;..\..\Cinder\blocks\Cairo\lib\msw;..\..\LeapDeveloperKit\LeapSDK\lib\x86</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
@@ -103,6 +109,12 @@
       <IgnoreSpecificDefaultLibraries>LIBCMT;LIBCPMT</IgnoreSpecificDefaultLibraries>
       <AdditionalDependencies>cinder_d.lib;%(AdditionalDependencies);cairo-static.lib;pixman-1.lib;Leapd.lib</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>"$(ProjectDir)postbuild.bat" "$(ProjectDir)" "$(OutDir)" $(Configuration)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>nonexisting.file</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -133,7 +145,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include;..\..\..\cinder_0.8.5_vc2012\include;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\include;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\include\msw;..\..\..\cinder_0.8.5_vc2012\boost;X:\source\leap_sdk_win_x86_0.8.1+6221\LeapSDK\include;X:\source\leap_sdk_win_x86_0.8.1+6221\LeapSDK\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;..\..\Cinder\include;..\..\Cinder\blocks\Cairo\include;..\..\Cinder\blocks\Cairo\include\msw;..\..\Cinder\boost;..\..\LeapDeveloperKit\LeapSDK\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;NOMINMAX;_WIN32_WINNT=0x0502;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader />
@@ -145,10 +157,10 @@
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
     </ProjectReference>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>"..\..\..\cinder_0.8.5_vc2012\include";..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Cinder\include;..\include</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\..\cinder_0.8.5_vc2012\lib;..\..\..\cinder_0.8.5_vc2012\lib\msw;..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\lib\msw;X:\source\leap_sdk_win_x86_0.8.1+6221\LeapSDK\lib\x86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Cinder\lib;..\..\Cinder\lib\msw;..\..\Cinder\blocks\Cairo\lib\msw;..\..\LeapDeveloperKit\LeapSDK\lib\x86</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <SubSystem>Windows</SubSystem>
@@ -159,6 +171,10 @@
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalDependencies>cinder.lib;cairo-static.lib;pixman-1.lib;Leap.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <CustomBuildStep>
+      <Command>"$(ProjectDir)postbuild.bat" "$(ProjectDir)" "$(OutDir)" $(Configuration)</Command>
+      <Outputs>nonexisting.file</Outputs>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -195,11 +211,11 @@
     <ResourceCompile Include="Resources.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\src\Cairo.cpp" />
+    <ClCompile Include="..\..\Cinder\blocks\Cairo\src\Cairo.cpp" />
     <ClCompile Include="..\src\LMBasicDrawApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\cinder_0.8.5_vc2012\blocks\Cairo\include\cinder\cairo\Cairo.h" />
+    <ClInclude Include="..\..\Cinder\blocks\Cairo\include\cinder\cairo\Cairo.h" />
     <ClInclude Include="..\include\Resources.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

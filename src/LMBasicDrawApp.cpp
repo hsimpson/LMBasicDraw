@@ -17,7 +17,7 @@ public:
 	virtual void draw();
 
   virtual void resize();
-  virtual void	keyDown( KeyEvent event );
+  virtual void keyDown( KeyEvent event );
 
   
 
@@ -161,7 +161,7 @@ void LMBasicDrawApp::drawSplines(cairo::Context& ctx)
 void LMBasicDrawApp::keyDown( KeyEvent event )
 {
   if( event.getCode() == KeyEvent::KEY_ESCAPE ) {
-    setFullScreen( false );
+    quit();
   }
   if(event.getChar() == 'f') { // toggle fullscreen
     setFullScreen(!isFullScreen());
@@ -169,7 +169,7 @@ void LMBasicDrawApp::keyDown( KeyEvent event )
   if(event.getChar() == 'x') {
     _splines.clear();
     _currentpoints.clear();
-  }  
+  }
 }
 
 CINDER_APP_NATIVE( LMBasicDrawApp, Renderer2d )
