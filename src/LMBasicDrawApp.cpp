@@ -1,42 +1,10 @@
-#include "cinder/app/AppNative.h"
-#include "cinder/BSpline.h"
-#include "cinder/cairo/Cairo.h"
-#include "cinder/CinderMath.h"
-#include "Leap.h"
 
-using namespace ci;
-using namespace ci::app;
-using namespace std;
+#include "LMBasicDrawApp.h"
 
-class LMBasicDrawApp : public AppNative 
-{
-public:
-  LMBasicDrawApp();
-  virtual ~LMBasicDrawApp();
-  virtual void setup();	
-	virtual void draw();
-
-  virtual void resize();
-  virtual void keyDown( KeyEvent event );
-
-  
+//#include "cinder/CinderMath.h"
 
 
-private:
-  void drawCursor(const Vec2f &pos, cairo::Context& ctx);
-  void drawSpline(const BSpline2f &spline, cairo::Context &ctx);
-  void drawSplines(cairo::Context &ctx);
-  
 
-  int _windowWidth;
-  int _windowHeight;
-  Leap::Controller _leap;
-  float _currentBrushSize;
-  float _currentPressure;
-  vector<Vec2f>	_currentpoints;
-  vector<BSpline2f> _splines;
-  int _splinedegree;
-};
 
 LMBasicDrawApp::LMBasicDrawApp()
   :_windowWidth(1024),
@@ -77,7 +45,7 @@ void LMBasicDrawApp::draw()
     float z = pointable.tipPosition().z;
 
     _currentPressure = -(z-10.0f);
-    console() << "current pressure = " << _currentPressure << endl;
+    console() << "current pressure = " << _currentPressure << std::endl;
     drawCursor(Vec2f(x, y), ctx);
 
     if(_currentPressure <= 0.0f) // hovering
