@@ -308,6 +308,7 @@
 					"$(inherited)",
 					../../LeapDeveloperKit/LeapSDK/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder_d.a\"",
 					../../Cinder/blocks/Cairo/lib/macosx/libcairo.a,
@@ -344,6 +345,7 @@
 					"$(inherited)",
 					../../LeapDeveloperKit/LeapSDK/lib,
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = (
 					"\"$(CINDER_PATH)/lib/libcinder.a\"",
 					../../Cinder/blocks/Cairo/lib/macosx/libcairo.a,
