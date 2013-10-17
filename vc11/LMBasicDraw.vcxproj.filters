@@ -39,6 +39,9 @@
     <ClInclude Include="..\..\Cinder\blocks\Cairo\include\cinder\cairo\Cairo.h">
       <Filter>Blocks\Cairo\include\cinder\cairo</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\LMBasicDrawApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Resources.h">
