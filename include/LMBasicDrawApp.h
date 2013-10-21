@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LMBasicDrawApp_h__
+#define LMBasicDrawApp_h__
 
 #include "Leap.h"
 #include "cinder/app/AppNative.h"
@@ -34,3 +35,5 @@ private:
   std::vector<BSpline2f> _splines;
   int _splinedegree;
 };
+
+#endif
