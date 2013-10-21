@@ -8,7 +8,6 @@ This APP is a basic drawing APP wich uses the [Leap Motion Controller](https://w
 2. [Leap Motion SDK](https://developer.leapmotion.com/downloads) (a developer account is needed)
 3. [Cinder C++ Library](http://libcinder.org/download/)
 
-
 ###Build###
 1. Create source directory e.g.: `C:\LM_Apps`
 2. Download the [Leap Motion SDK](https://developer.leapmotion.com/downloads)
@@ -18,6 +17,7 @@ This APP is a basic drawing APP wich uses the [Leap Motion Controller](https://w
 6. Open the solution `./vc11/LMBasicDraw.sln` in Visual Studio 2012
 7. Build and run
 8. Output can be found in `./vc11/dist`
+
 
 ##OSX:##
 ###Dependencies###
@@ -35,12 +35,11 @@ This APP is a basic drawing APP wich uses the [Leap Motion Controller](https://w
 7. Build and run
 
 
-
-
-## Help: ##
+##Help:##
 * To draw use only on finger of one hand
 * Move this finger forward to the controller untils the cursor circle turn green
 * Move this finger above the controller to draw strokes
 * Press 'f' key to toggle fullscreen
 * Press 'x' key to clear drawing
+* Press 'ESC' to quit the APP
 
