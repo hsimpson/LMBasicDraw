@@ -23,6 +23,8 @@ void LMBasicDrawApp::setup()
 {
   setWindowSize(_windowWidth, _windowHeight);
   setFrameRate(60);
+  setFullScreen(true);
+  hideCursor();
 }
 
 void LMBasicDrawApp::draw()
